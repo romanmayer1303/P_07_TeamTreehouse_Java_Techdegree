@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- suppress ALL -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="base :: headcopy"></div>
+<body>
+<div th:replace="base :: headercopy"></div>
+
+<nav>
+    <ul>
+        <li class="selected"><a th:href="@{/projects}">Projects</a></li>
+        <li><a th:href="@{/collaborators}">Collaborators</a></li>
+        <li><a th:href="@{/roles}">Roles</a></li>
+    </ul>
+</nav>
+
+<section>
+    <div class="container wrapper">
+        <div class="project-list">
+            <div class="project" th:each="project : ${projects}">
+                <h2><a th:href="@{|/projects/${project.id}|}" th:text="${project.name}">Project Name</a></h2>
+                <p th:text="${project.description}">Project Description</p>
+                <span class="tag active" th:text="${project.status}">Project Status</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

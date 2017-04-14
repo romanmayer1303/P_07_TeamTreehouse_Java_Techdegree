@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- suppress ALL -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="base :: headcopy"></div>
+<body>
+<div th:replace="base :: headercopy"></div>
+<nav>
+    <ul>
+        <li><a th:href="@{/projects}">Projects</a></li>
+        <li><a th:href="@{/collaborators}">Collaborators</a></li>
+        <li class="selected"><a th:href="@{/roles}">Roles</a></li>
+    </ul>
+</nav>
+
+<section>
+    <div class="container wrapper">
+
+        <form th:action="@{/roles/update}" th:object="${role}" method="post">
+            <h2>Edit Role</h2>
+            <input type="hidden" th:field="*{id}"/>
+            <input type="text" th:field="*{name}" placeholder="Role Name"/>
+            <input type="submit" class="button" value="Update" style="width: 83.2px" />
+        </form>
+
+        <div th:id="${role.id != null}">
+            <form th:action="@{|/roles/${role.id}/delete|}" method="post">
+                <button type="submit" class="button">Delete</button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+</body>
+</html>

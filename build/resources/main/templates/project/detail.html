@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- suppress ALL -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="base :: headcopy"></div>
+<body>
+<div th:replace="base :: headercopy"></div>
+
+<nav>
+    <ul>
+        <li class="selected"><a th:href="@{/projects}">Projects</a></li>
+        <li><a th:href="@{/collaborators}">Collaborators</a></li>
+        <li><a th:href="@{/roles}">Roles</a></li>
+    </ul>
+</nav>
+
+<section>
+    <div class="container wrapper">
+        <div class="project-list single">
+            <div class="project">
+                <h2 th:text="${project.name}">Project Name</h2>
+                <p th:text="${project.description}">Project Description</p>
+                <span class="tag active" th:text="${project.status}">Project Status</span>
+            </div>
+
+      <!--      <div class="roles-collaborators">
+                <h3>Roles &amp; Collaborators</h3>
+                <div th:each="collaborator : ${project.collaborators}">
+                    <div class="list-item">
+                        <span class="primary" th:text="${collaborator.role.name}">Role</span>
+                        <span class="secondary" th:text="${collaborator.name}">Name</span>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="roles-collaborators">
+                <h3>Roles &amp; Collaborators</h3>
+                <div th:each="entry : ${assignedRoles}">
+                  <!--  <div class="list-item">
+                        <span class="primary" th:text="${entry.key.name}">Role</span>
+                        <span class="secondary" th:text="${entry.value.name}">Name</span>
+                    </div>-->
+                    <div class="list-item">
+                        <span class="primary" th:text="test">Role</span>
+                        <span class="secondary" th:text="test">Name</span>
+                    </div>
+                </div>
+                <div th:each="role : ${unassignedRoles}">
+                    <div class="list-item">
+                        <span class="primary" th:text="${role.name}">Role</span>
+                        <span class="secondary">[unassigned]</span>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
