@@ -36,6 +36,8 @@ public class ProjectDaoImpl implements ProjectDao {
         // UPDATED: Execute query
         List<Project> projects = session.createQuery(criteria).getResultList();
 
+        projects.stream().forEach(project -> Hibernate.initialize(project.getRolesNeeded()));
+
         // Close session
         session.close();
 

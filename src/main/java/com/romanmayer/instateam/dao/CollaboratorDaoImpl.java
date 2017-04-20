@@ -1,6 +1,7 @@
 package com.romanmayer.instateam.dao;
 
 import com.romanmayer.instateam.model.Collaborator;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,7 @@ public class CollaboratorDaoImpl implements CollaboratorDao {
     public Collaborator findById(Long id) {
         Session session = sessionFactory.openSession();
         Collaborator collaborator = session.get(Collaborator.class, id);
+        Hibernate.initialize(collaborator.getRole()); //TODO:
         session.close();
         return collaborator;
     }

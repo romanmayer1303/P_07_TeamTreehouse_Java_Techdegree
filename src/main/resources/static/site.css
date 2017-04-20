@@ -402,6 +402,43 @@ strong {
 }
 
 /* ==========================================================================
+   Flash Message Styles
+   ========================================================================== */
+
+div .flash {
+    margin-bottom: -1rem;
+    padding: 1rem 35px 0 35px;
+    font-size: 1.1rem;
+}
+
+.flash.success {
+    color: #7f9e40;
+
+}
+
+.flash.failure {
+    color: #ac4343;
+}
+
+.error input {
+    border-width: 2px;
+    border-color: #ac4343;
+    border-bottom: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.error .error-message {
+    margin-top: -28px;
+    margin-bottom: 5px;
+    border: 2px solid #ac4343;
+    border-radius: 6px;
+    background-color: #ac4343;
+    color: rgb(254,251,251);
+    padding: 10px;
+}
+
+/* ==========================================================================
    Form Styles
    ========================================================================== */
 

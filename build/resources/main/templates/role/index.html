@@ -14,6 +14,8 @@
 <section>
     <div class="container wrapper">
 
+        <div th:replace="base :: flash"></div>
+
         <form th:action="@{/roles/add}" th:object="${role}" method="post">
             <h2>Manage Roles</h2>
             <div th:each="role : ${roles}">

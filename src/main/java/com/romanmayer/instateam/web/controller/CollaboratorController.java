@@ -57,13 +57,20 @@ public class CollaboratorController {
     // Update an existing collaborator
     @RequestMapping(value = "/collaborators/update", method = RequestMethod.POST)
     public String updateCollaborator(@Valid Collaborator collaborator) {
+        // the current form only submits the ROLE ID, not the name of the role.
+        // so we use the roleService & the role ID to look up the actual role,
+        // then plug that into the Collaborator object
+        Role role = roleService.findById(collaborator.getRole().getId());
+        collaborator.setRole(role);
         collaboratorService.save(collaborator);
         return "redirect:/collaborators";
     }
 
-    // Add a new role
+    // Add a new Collaborator
     @RequestMapping(value = "collaborators/add", method = RequestMethod.POST)
-    public String addRole(@Valid Collaborator collaborator) {
+    public String addCollaborator(@Valid Collaborator collaborator) {
+        Role role = roleService.findById(collaborator.getRole().getId());
+        collaborator.setRole(role);
         collaboratorService.save(collaborator);
         return "redirect:/collaborators";
     }
@@ -71,7 +78,10 @@ public class CollaboratorController {
     // Delete an existing collaborator
     @RequestMapping(value = "/collaborators/{collaboratorId}/delete", method = RequestMethod.POST)
     public String deleteRole(@PathVariable Long collaboratorId) {
-        collaboratorService.delete(collaboratorService.findById(collaboratorId));
+        Collaborator collaborator = collaboratorService.findById(collaboratorId);
+//        collaborator.setRole(null);
+//        collaboratorService.save(collaborator);
+        collaboratorService.delete(collaborator);
         return "redirect:/collaborators";
     }
 

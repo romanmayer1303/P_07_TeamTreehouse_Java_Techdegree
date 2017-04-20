@@ -25,7 +25,10 @@ public class Project {
     @Size(min = 1, max = 35)
     private String status; // for example “recruiting” or “on hold” //TODO:RM (maybe make Enum...?)
 
-    @ManyToMany //TODO:RM add: @JoinTable, cascade...
+    @ManyToMany(cascade = CascadeType.ALL)  //TODO:RM add: @JoinTable, cascade...
+  /*  @JoinTable(name = "PROJECT_ROLE",
+            joinColumns = {@JoinColumn(name = "ROLESNEEDED_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "PROJECT_ID")}) */
     private List<Role> rolesNeeded;
 
     @ManyToMany //TODO:RM add: @JoinTable, cascade...
