@@ -77,7 +77,7 @@ public class CollaboratorController {
 
     // Delete an existing collaborator
     @RequestMapping(value = "/collaborators/{collaboratorId}/delete", method = RequestMethod.POST)
-    public String deleteRole(@PathVariable Long collaboratorId) {
+    public String deleteCollaborator(@PathVariable Long collaboratorId) {
         Collaborator collaborator = collaboratorService.findById(collaboratorId);
 //        collaborator.setRole(null);
 //        collaboratorService.save(collaborator);

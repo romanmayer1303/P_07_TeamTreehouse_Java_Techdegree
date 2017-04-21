@@ -438,6 +438,16 @@ div .flash {
     padding: 10px;
 }
 
+.error-role-index .error-message {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border: 2px solid #ac4343;
+    border-radius: 6px;
+    background-color: #ac4343;
+    color: rgb(254,251,251);
+    padding: 10px;
+}
+
 /* ==========================================================================
    Form Styles
    ========================================================================== */

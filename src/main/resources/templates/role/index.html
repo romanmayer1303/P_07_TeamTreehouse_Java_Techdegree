@@ -26,10 +26,15 @@
                     </li>
                 </ul>
             </div>
-            <div class="actions add-new-role">
+            <div th:classappend="${#fields.hasErrors('name')}? 'error-role-index' : ''">
+                <div class="error-message" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+            </div>
+            <div class="actions add-new-role" th:style="${#fields.hasErrors('name')}? 'padding-top: 0' : ''">
                 <input type="text" th:field="*{name}" placeholder="New Role..."/>
                 <input type="submit" class="button" value="Add" style="width: 60px"/>
             </div>
+
+
             <!--    <div class="error-message" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div> -->
 
         </form>
